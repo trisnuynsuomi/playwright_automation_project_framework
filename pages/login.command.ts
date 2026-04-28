@@ -17,6 +17,5 @@ export class LoginPageCommand {
         const body = await commonPageCommand.triggerAndWaitApi<LoginResponse>(this.page, "/api/auth/login", 200, async () => {
             await this.page.locator(this.loginButton).click();
         });
-        return body;
     }
 }
