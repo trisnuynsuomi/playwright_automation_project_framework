@@ -1,14 +1,15 @@
-import test from "@playwright/test";
-import { createPages } from "../utils/factory/pages.factory";
+import { test } from "../utils/fixtures/pages.fixture";
 
-let pages: ReturnType<typeof createPages>;
-
-test.beforeEach('Navigate to test page', async ({ page }) => {
-    pages = createPages(page);
+test.describe("Login Suites", () => {
+  test.beforeEach(async ({ pages }) => {
     await pages.commonPageCommand.navigateToPage();
-});
+  });
 
-test('User can Login successfully', async ({ page }) => {
+  test("User can Login successfully", async ({ pages }) => {
     await pages.homepageCommand.clickAdminLink();
-    await pages.loginPageCommand.login(process.env.USERNAME as string, process.env.PASSWORD as string);
-}); 
+    await pages.loginPageCommand.login(
+      process.env.USERNAME as string,
+      process.env.PASSWORD as string,
+    );
+  });
+});
