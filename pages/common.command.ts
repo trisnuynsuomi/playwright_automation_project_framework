@@ -5,13 +5,16 @@ import { HomepageRoomResponse } from "../utils/types/homePage.types";
 dotenv.config();
 
 export class CommonPageCommand {
-
   constructor(private readonly page: Page) {}
 
   async navigateToPage() {
-    await this.triggerAndWaitApi<HomepageRoomResponse>("/api/room", 200, async () => {
-      await this.page.goto("");
-    });
+    await this.triggerAndWaitApi<HomepageRoomResponse>(
+      "/api/room",
+      200,
+      async () => {
+        await this.page.goto("");
+      },
+    );
   }
 
   async triggerAndWaitApi<T = any>(
@@ -31,13 +34,10 @@ export class CommonPageCommand {
 
     try {
       body = await response.json();
-      console.log('API body:', JSON.stringify(body, null, 2));
+      console.log("API body:", JSON.stringify(body, null, 2));
     } catch (e) {
-      console.log('No JSON body or cannot parse');
+      console.log("No JSON body or cannot parse");
     }
     return { response, body: body as T };
   }
 }
-
-
-
