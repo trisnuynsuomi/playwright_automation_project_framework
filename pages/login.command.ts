@@ -1,6 +1,6 @@
 import { Page } from "@playwright/test";
 import { CommonPageCommand } from "./common.command";
-import { LoginResponse } from "../types/login.types";
+import { LoginResponse } from "../utils/types/login.types";   
 
 export class LoginPageCommand {
     constructor( private page: Page) {}

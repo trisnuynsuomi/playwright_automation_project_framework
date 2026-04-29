@@ -1,6 +1,6 @@
 import { Page, Response } from "@playwright/test";
 import dotenv from "dotenv";
-import { HomepageRoomResponse } from "../types/homePage.types";
+import { HomepageRoomResponse } from "../utils/types/homePage.types";
 
 dotenv.config();
 
