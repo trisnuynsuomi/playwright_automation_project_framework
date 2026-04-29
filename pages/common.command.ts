@@ -5,11 +5,8 @@ import { HomepageRoomResponse } from "../utils/types/homePage.types";
 dotenv.config();
 
 export class CommonPageCommand {
-  readonly page: Page;
 
-  constructor(page: Page) {
-    this.page = page;
-  }
+  constructor(private readonly page: Page) {}
 
   async navigateToPage() {
     await this.triggerAndWaitApi<HomepageRoomResponse>("/api/room", 200, async () => {
