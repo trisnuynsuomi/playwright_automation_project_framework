@@ -4,9 +4,12 @@ import { HomepageCommand } from "../../pages/homepage.command";
 import { LoginPageCommand } from "../../pages/login.command";
 
 export const createPages = (page: Page) => {
+    const commonPageCommand = new CommonPageCommand(page);
+    const loginPageCommand = new LoginPageCommand(page, commonPageCommand);
+    const homepageCommand = new HomepageCommand(page);
     return {
-      commonPageCommand: new CommonPageCommand(page),
-      loginPageCommand: new LoginPageCommand(page),
-      homepageCommand: new HomepageCommand(page),
+      commonPageCommand,
+      loginPageCommand,
+      homepageCommand,
     };
-  };          
+};              

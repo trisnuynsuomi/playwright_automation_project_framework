@@ -12,18 +12,17 @@ export class CommonPageCommand {
   }
 
   async navigateToPage() {
-    const body = await this.triggerAndWaitApi<HomepageRoomResponse>(this.page, "/api/room", 200, async () => { 
+    await this.triggerAndWaitApi<HomepageRoomResponse>("/api/room", 200, async () => {
       await this.page.goto("");
     });
   }
 
   async triggerAndWaitApi<T = any>(
-    page: Page,
     url: string,
     status: number,
     action: () => Promise<void>,
   ): Promise<{ response: Response; body: T }> {
-    const responsePromise = page.waitForResponse(
+    const responsePromise = this.page.waitForResponse(
       (res) => res.url().includes(url) && res.status() === status,
     );
 
